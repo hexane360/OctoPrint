@@ -318,7 +318,8 @@ default_settings = {
 		"localNetworks": ["127.0.0.0/8"],
 		"autologinAs": None,
 		"trustBasicAuthentication": False,
-		"checkBasicAuthenticationPassword": True
+		"checkBasicAuthenticationPassword": True,
+		"restrictedFileMenu": False
 	},
 	"slicing": {
 		"enabled": True,

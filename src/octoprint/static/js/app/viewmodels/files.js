@@ -159,6 +159,14 @@ $(function() {
             }
         });
 
+        self.isActive = ko.pureComputed(function() {
+            return !self.settingsViewModel.accessControl_restrictedFileMenu() || self.loginState.isUser();
+        });
+
+        self.isActive.subscribe(function(active) { //wait until we know files are accessible to load them
+            if (active) self.requestData();
+        });
+
         self.isLoadActionPossible = ko.pureComputed(function() {
             return self.loginState.isUser() && !self.isPrinting() && !self.isPaused() && !self.isLoading();
         });
@@ -213,7 +221,7 @@ $(function() {
         self._switchToPath = undefined;
         self.requestData = function(params) {
             var focus, switchToPath, force;
-
+            //console.log("files requestData()");
             if (_.isObject(params)) {
                 focus = params.focus;
                 switchToPath = params.switchToPath;
@@ -865,8 +873,6 @@ $(function() {
             self.printerState.isSdReady.subscribe(evaluateDropzones);
             self.isPrinting.subscribe(evaluateDropzones);
             evaluateDropzones();
-
-            self.requestData();
         };
 
         self.onEventUpdatedFiles = function(payload) {

@@ -543,7 +543,7 @@ def fetch_template_data(refresh=False):
 	templates["sidebar"]["entries"]= dict(
 		connection=(gettext("Connection"), dict(template="sidebar/connection.jinja2", _div="connection", icon="signal", styles_wrapper=["display: none"], data_bind="visible: loginState.isUser", template_header="sidebar/connection_header.jinja2")),
 		state=(gettext("State"), dict(template="sidebar/state.jinja2", _div="state", icon="info-circle")),
-		files=(gettext("Files"), dict(template="sidebar/files.jinja2", _div="files", icon="list", classes_content=["overflow_visible"], template_header="sidebar/files_header.jinja2"))
+		files=(gettext("Files"), dict(template="sidebar/files.jinja2", _div="files", icon="list", classes_content=["overflow_visible"], template_header="sidebar/files_header.jinja2", data_bind="visible: isActive", styles_wrapper=["display: none"]))
 	)
 
 	# tabs

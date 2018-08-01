@@ -10,7 +10,7 @@ from flask import request, jsonify, make_response, url_for
 from octoprint.filemanager.destinations import FileDestinations
 from octoprint.settings import settings, valid_boolean_trues
 from octoprint.server import printer, fileManager, slicingManager, eventManager, NO_CONTENT, current_user
-from octoprint.server.util.flask import restricted_access, get_json_command_from_request, with_revalidation_checking
+from octoprint.server.util.flask import restricted_access, filemanager_access, get_json_command_from_request, with_revalidation_checking
 from octoprint.server.api import api
 from octoprint.events import Events
 import octoprint.filemanager
@@ -87,6 +87,7 @@ def _create_etag(path, filter, recursive, lm=None):
 
 
 @api.route("/files", methods=["GET"])
+@filemanager_access
 @with_revalidation_checking(etag_factory=lambda lm=None: _create_etag(request.path,
                                                                       request.values.get("filter", False),
                                                                       request.values.get("recursive", False),
@@ -107,6 +108,7 @@ def readGcodeFiles():
 
 
 @api.route("/files/<string:origin>", methods=["GET"])
+@filemanager_access
 @with_revalidation_checking(etag_factory=lambda lm=None: _create_etag(request.path,
                                                                       request.values.get("filter", False),
                                                                       request.values.get("recursive", False),
@@ -461,6 +463,7 @@ def uploadGcodeFile(target):
 
 
 @api.route("/files/<string:target>/<path:filename>", methods=["GET"])
+@filemanager_access
 def readGcodeFile(target, filename):
 	if not target in [FileDestinations.LOCAL, FileDestinations.SDCARD]:
 		return make_response("Unknown target: %s" % target, 404)

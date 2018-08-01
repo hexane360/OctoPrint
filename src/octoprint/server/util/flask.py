@@ -1141,6 +1141,17 @@ def restricted_access(func):
 
 	return decorated_view
 
+def filemanager_access(func):
+    """
+    Open by default, but redirects to restricted_access if accessControl/restrictedFileMenu is enabled
+    """
+    @functools.wraps(func)
+    def decorated_view(*args, **kwargs):
+        if settings().getBoolean(["accessControl", "restrictedFileMenu"]):
+            return restricted_access(func)(*args, **kwargs)
+        return func(*args, **kwargs)
+
+    return decorated_view
 
 def firstrun_only_access(func):
 	"""

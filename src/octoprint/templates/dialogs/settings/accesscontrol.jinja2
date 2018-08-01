@@ -153,3 +153,13 @@
         <button class="btn btn-primary" data-bind="click: function() { $root.users.confirmChangePassword(); }, enable: !$root.users.editorPasswordMismatch()">{{ _('Confirm') }}</button>
     </div>
 </div>
+
+<form class="form-horizontal">
+    <div class="control-group">
+        <div class="controls">
+            <label class="checkbox">
+                <input type="checkbox" data-bind="checked: accessControl_restrictedFileMenu" id="settings-restrictedFileMenu"> {{ _('File Menu Requires Login') }}
+            </label>
+        </div>
+    </div>
+</form>

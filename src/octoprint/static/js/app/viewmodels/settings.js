@@ -114,6 +114,8 @@ $(function() {
         self.appearance_defaultLanguage = ko.observable();
         self.appearance_showFahrenheitAlso = ko.observable(undefined);
 
+        self.accessControl_restrictedFileMenu = ko.observable(true);
+
         self.printer_defaultExtrusionLength = ko.observable(undefined);
 
         self.webcam_streamUrl = ko.observable(undefined);

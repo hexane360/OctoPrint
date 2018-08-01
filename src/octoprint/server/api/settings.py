@@ -81,6 +81,9 @@ def getSettings():
 	# is changed, added or removed here
 
 	data = {
+	    "accessControl": {
+	        "restrictedFileMenu": s.getBoolean(["accessControl", "restrictedFileMenu"])
+	    },
 		"api": {
 			"enabled": s.getBoolean(["api", "enabled"]),
 			"key": s.get(["api", "key"]) if admin_permission.can() else None,
@@ -366,6 +369,9 @@ def _saveSettings(data):
 	if "api" in data.keys():
 		if "enabled" in data["api"]: s.setBoolean(["api", "enabled"], data["api"]["enabled"])
 		if "allowCrossOrigin" in data["api"]: s.setBoolean(["api", "allowCrossOrigin"], data["api"]["allowCrossOrigin"])
+
+	if "accessControl" in data.keys():
+	    if "restrictedFileMenu" in data["accessControl"]: s.setBoolean(["accessControl", "restrictedFileMenu"], data["accessControl"]["restrictedFileMenu"])
 
 	if "appearance" in data.keys():
 		if "name" in data["appearance"]: s.set(["appearance", "name"], data["appearance"]["name"])
