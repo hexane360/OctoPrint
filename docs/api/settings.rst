@@ -370,6 +370,8 @@ mapped from the same fields in ``config.yaml`` unless otherwise noted:
        possible through `config.yaml`.
    * - ``api.allowCrossOrigin``
      -
+   * - ``accessControl.restrictedFileMenu``
+     -
    * - ``appearance.name``
      -
    * - ``appearance.color``

@@ -62,6 +62,9 @@ Use the following settings to enable access control:
      # header and login the user without further checks. Use with caution.
      checkBasicAuthenticationPassword: true
 
+     # Whether g-code files require authentication to view or download (via the API or GUI)
+     restrictedFileMenu: false
+
 .. _sec-configuration-config_yaml-api:
 
 API

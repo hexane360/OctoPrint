@@ -19,6 +19,8 @@ Retrieve all files
    By default only returns the files and folders in the root directory. If the query parameter ``recursive``
    is provided and set to ``true``, returns all files and folders.
 
+   Requires user rights if :ref:`accessControl.restrictedFileMenu <sec-configuration-config_yaml-accesscontrol>` is enabled.
+
    Returns a :ref:`Retrieve response <sec-api-fileops-datamodel-retrieveresponse>`.
 
    **Example 1**:
@@ -247,6 +249,8 @@ Retrieve files from specific location
 
    By default only returns the files and folders in the root directory. If the query parameter ``recursive``
    is provided and set to ``true``, returns all files and folders.
+
+   Requires user rights if :ref:`accessControl.restrictedFileMenu <sec-configuration-config_yaml-accesscontrol>` is enabled.
 
    Returns a :ref:`Retrieve response <sec-api-fileops-datamodel-retrieveresponse>`.
 
@@ -500,6 +504,8 @@ Retrieve a specific file's or folder's information
 
    If the targeted path is a folder, by default only its direct children will be returned. If ``recursive`` is
    provided and set to ``true``, all sub folders and their children will be returned too.
+
+   Requires user rights if :ref:`accessControl.restrictedFileMenu <sec-configuration-config_yaml-accesscontrol>` is enabled.
 
    On success, a :http:statuscode:`200` is returned, with a :ref:`file information item <sec-api-datamodel-files-file>`
    as the response body.

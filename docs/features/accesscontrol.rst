@@ -16,6 +16,8 @@ the read-only parts of the UI which are the following:
   * any components provided through plugins which are enabled for anonymous
     users
 
+If :ref:`accessControl.restrictedFileMenu <sec-configuration-config_yaml-accesscontrol>` is enabled, anonymous users will not be able to view or download gcode files.
+
 Logged in users will get access to everything besides the Settings and System
 Commands, which are admin-only.
 

@@ -221,7 +221,7 @@ $(function() {
         self._switchToPath = undefined;
         self.requestData = function(params) {
             var focus, switchToPath, force;
-            //console.log("files requestData()");
+
             if (_.isObject(params)) {
                 focus = params.focus;
                 switchToPath = params.switchToPath;
@@ -994,7 +994,7 @@ $(function() {
 
         self.onServerConnect = self.onServerReconnect = function(payload) {
             self._enableDragNDrop(true);
-            self.requestData();
+            if (self.isActive()) self.requestData();
         };
 
         self.onServerDisconnect = function(payload) {
